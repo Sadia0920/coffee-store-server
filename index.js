@@ -7,7 +7,14 @@ const port = process.env.port || 3000;
 
 // middleWare
 
-app.use(cors());
+// app.use(cors());
+const corsConfig = {
+  origin: '',
+  credentials: true,
+  methods: ['GET','POST','PUT','DELETE']
+}
+app.use(cors(corsConfig))
+app.options("",cors(corsConfig))
 app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.g9mg4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
